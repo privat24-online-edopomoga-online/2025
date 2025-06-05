@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 Послуги Садівника в Києві | Професійний догляд за вашим садом</title>
+    <meta name="description" content="Професійні послуги садівника в Києві та області. ✅ Догляд за газоном ✅ Обрізка дерев та кущів ✅ Ландшафтний дизайн. Створимо сад вашої мрії разом!">
+    <meta name="keywords" content="послуги садівника київ, садівник київ, догляд за садом, обрізка дерев київ, ландшафтний дизайн, догляд за газоном">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2C5F2D;
+            --secondary-green: #588157;
+            --accent-yellow: #FFBF00;
+            --light-bg: #F5F5F5; /* Was #FDFDFD */
+            --dark-text: #333333;
+            --light-text: #FFFFFF;
+            --animation-speed: 0.4s;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            scroll-behavior: smooth;
+        }
+        /* --- Preloader --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--primary-green);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity var(--animation-speed) ease, visibility var(--animation-speed) ease;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-text {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--light-text);
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--accent-yellow);
+            margin-top: 20px;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* --- General Styles --- */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+            overflow: hidden;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: color var(--animation-speed), background-color var(--animation-speed);
+        }
+        nav a:hover {
+            color: var(--light-text);
+            background-color: var(--secondary-green);
+        }
+        section {
+            padding: 80px 20px;
+        }
+        section:nth-of-type(odd) {
+            background-color: #ffffff;
+        }
+        h1, h2, h3 {
+             font-family: 'Montserrat', sans-serif;
+             font-weight: 700;
+             color: var(--primary-green);
+        }
+        h1 { font-size: 2.8em; text-align: center; color: var(--light-text); }
+        h2 { font-size: 2.2em; text-align: center; margin-bottom: 50px; }
+        .hero {
+            background: linear-gradient(rgba(44, 95, 45, 0.8), rgba(44, 95, 45, 0.8)), url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            background-color: var(--primary-green);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-yellow);
+            color: var(--dark-text);
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            transition: all var(--animation-speed);
+            margin: 5px;
+            border: 2px solid transparent;
+        }
+        .cta-button:hover {
+            background: #ffcd33;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--light-text);
+            border: 2px solid var(--accent-yellow);
+        }
+        .cta-button.secondary:hover {
+            background: var(--accent-yellow);
+            color: var(--dark-text);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform var(--animation-speed), box-shadow var(--animation-speed);
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+        .card .emoji {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            display: block;
+            line-height: 1;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-green);
+        }
+        .advantages-list {
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .advantages-list li {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .advantages-list li::before {
+            content: '✅';
+            font-size: 20px;
+            margin-right: 15px;
+            color: var(--secondary-green);
+        }
+        /* Article Styles */
+        .article-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform var(--animation-speed), box-shadow var(--animation-speed);
+        }
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+        .article-content {
+            padding: 25px;
+        }
+        .article-content h3 {
+            color: var(--primary-green);
+            margin-top: 0;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        .read-more {
+            color: var(--secondary-green);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        /* Footer Styles */
+        footer {
+            background: var(--dark-text);
+            color: #ccc;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        footer h2 {
+            color: var(--light-text);
+        }
+        footer a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+        }
+        footer p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-text">🌿 Завантаження...</div>
+        <div class="spinner"></div>
+    </div>
+
+    <header id="header">
+        <nav>
+            <a href="#services">Послуги</a>
+            <a href="#advantages">Переваги</a>
+            <a href="#articles">Статті</a>
+            <a href="#contact">Контакти</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <h1>Сад вашої мрії – наша турбота</h1>
+            <p>Надаємо повний спектр професійних послуг садівника в Києві та області. Від стрижки газону до складних ландшафтних проектів. Перетворимо вашу ділянку на витвір мистецтва!</p>
+            <a href="#contact" class="cta-button">Безкоштовна консультація</a>
+            <a href="#services" class="cta-button secondary">Переглянути послуги</a>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Наші Послуги</h2>
+                <div class="grid">
+                    <div class="card">
+                        <span class="emoji">🌳</span>
+                        <h3>Комплексний догляд за садом</h3>
+                        <p>Регулярне обслуговування вашої ділянки: прополка, полив, підживлення рослин, боротьба зі шкідниками та хворобами. Ваш сад завжди буде виглядати доглянутим.</p>
+                    </div>
+                    <div class="card">
+                        <span class="emoji">🌿</span>
+                        <h3>Догляд за газоном</h3>
+                        <p>Стрижка, аерація, скарифікація, внесення добрив та боротьба з бур'янами. Створюємо та підтримуємо ідеально рівний та густий зелений килим.</p>
+                    </div>
+                    <div class="card">
+                        <span class="emoji">✂️</span>
+                        <h3>Обрізка дерев та кущів</h3>
+                        <p>Формуюча, санітарна та омолоджуюча обрізка плодових і декоративних рослин. Стимулюємо ріст, покращуємо врожайність та надаємо красиву форму.</p>
+                    </div>
+                    <div class="card">
+                        <span class="emoji">🌷</span>
+                        <h3>Створення квітників та клумб</h3>
+                        <p>Розробка дизайну та створення квіткових композицій безперервного цвітіння, які будуть радувати вас з весни до пізньої осені. Підбір рослин під ваш грунт та освітлення.</p>
+                    </div>
+                    <div class="card">
+                        <span class="emoji">🍂</span>
+                        <h3>Сезонні роботи</h3>
+                        <p>Підготовка саду до зими: укриття рослин, прибирання листя. Весняні роботи: відкриття рослин, перша обробка та підживлення для активного старту сезону.</p>
+                    </div>
+                    <div class="card">
+                        <span class="emoji">🎨</span>
+                        <h3>Ландшафтний дизайн та проектування</h3>
+                        <p>Розробка унікального проекту для вашої ділянки з урахуванням всіх побажань. Зонування території, проектування доріжок, водойм та систем автополиву.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantages">
+             <div class="container">
+                <h2>Чому обирають саме нас?</h2>
+                <ul class="advantages-list">
+                    <li><strong>Професіоналізм та досвід.</strong> Наші садівники мають багаторічний досвід роботи з рослинами, характерними для кліматичної зони Києва.</li>
+                    <li><strong>Індивідуальний підхід.</strong> Ми не використовуємо шаблони. Кожен сад унікальний, і ми розробляємо персональний план догляду для кожної ділянки.</li>
+                    <li><strong>Сучасний інструмент.</strong> Використовуємо лише професійне обладнання (Stihl, Husqvarna, Gardena), що гарантує якість та швидкість виконання робіт.</li>
+                    <li><strong>Надійність та пунктуальність.</strong> Ми завжди дотримуємося графіка робіт та погоджених термінів. Ви можете на нас розраховувати.</li>
+                    <li><strong>Екологічні методи.</strong> За можливістю ми використовуємо біологічні засоби захисту рослин та органічні добрива, дбаючи про ваше здоров'я та довкілля.</li>
+                    <li><strong>Прозора ціна.</strong> Ви завжди знаєте, за що платите. Ми надаємо детальний кошторис перед початком робіт без прихованих платежів.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="articles">
+            <div class="container">
+                <h2>Статті та поради від садівника</h2>
+                <div class="grid">
+                    <article class="article-card">
+                        <div class="article-content">
+                            <h3>💡 Як підготувати сад до зими в Києві</h3>
+                            <p>Правильна підготовка саду до холодів – запорука його здоров'я наступного року. Основні кроки: санітарна обрізка, волога-зарядний полив, укриття теплолюбних рослин...</p>
+                            <a href="#!" class="read-more">Читати далі →</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-content">
+                             <h3>🌼 Топ-5 невибагливих рослин для саду</h3>
+                            <p>Хочете гарний, але простий у догляді сад? Зверніть увагу на хости, гейхери, гортензії, ялівець та седум. Ці рослини виглядають ефектно та не вимагають багато уваги...</p>
+                            <a href="#!" class="read-more">Читати далі →</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-content">
+                             <h3> газону: часті помилки</h3>
+                            <p>Ідеальний газон – це просто? Не зовсім. Уникнення поширених помилок, таких як занадто низька стрижка, нерегулярний полив та ігнорування аерації, допоможе вам...</p>
+                            <a href="#!" class="read-more">Читати далі →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <div class="container">
+                <h2>Зв'яжіться з нами для створення саду вашої мрії</h2>
+                <p>Телефонуйте для консультації або виклику спеціаліста на вашу ділянку. Ми відповімо на всі ваші запитання.</p>
+                <p style="font-size: 1.5em; font-family: 'Montserrat', sans-serif;">
+                    📞 Телефон: <a href="tel:+380000000000">+38 (000) 000-00-00</a>
+                </p>
+                 <p style="font-size: 1.2em;">
+                    ✉️ Email: <a href="mailto:sadovnik.kyiv@example.com">sadovnik.kyiv@example.com</a>
+                </p>
+                <p><strong>Графік роботи:</strong> Пн-Сб, 9:00 - 19:00</p>
+                <br>
+                 <a href="tel:+380000000000" class="cta-button">Зателефонувати зараз</a>
+                 <br><br><br>
+                <p style="color: #aaa; font-size: 0.9em;">&copy; 2025 Професійний Садівник Київ. Всі права захищені.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Preloader script
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 3000); // 3 seconds
+        });
+        
+        // Note: For the "Read more" links in articles, you would typically 
+        // link to another page or show a popup (modal). For a one-page site, 
+        // this is a placeholder. You can make them clickable to expand text 
+        // with more JavaScript if needed.
+    </script>
+</body>
+</html>
